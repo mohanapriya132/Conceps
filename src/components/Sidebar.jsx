@@ -69,31 +69,40 @@ function NavItem({ item, collapsed }) {
   )
 }
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, setIsOpen }) {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <aside
-      className={`
-        ${collapsed ? 'w-[58px]' : 'w-[220px]'}
-        bg-white border-r border-gray-100 flex flex-col h-screen
-        sticky top-0 shrink-0 transition-all duration-300 z-20
-      `}
-    >
-      {/* Logo row */}
-      <div className="flex items-center justify-between px-4 h-[52px] border-b border-gray-100 shrink-0">
-        {!collapsed && (
-          <span className="text-[17px] font-extrabold tracking-tight text-gray-900 select-none">
-            CONCEPS
-          </span>
-        )}
-        <button
-          onClick={() => setCollapsed(c => !c)}
-          className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-colors ml-auto"
-        >
-          {collapsed ? <ChevronRight size={15} /> : <ChevronLeft size={15} />}
-        </button>
-      </div>
+    <>
+      {/* Mobile overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-gray-900/50 z-30 lg:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+      <aside
+        className={`
+          ${collapsed ? 'w-[58px]' : 'w-[220px]'}
+          bg-white border-r border-gray-100 flex flex-col h-screen
+          fixed lg:sticky top-0 shrink-0 transition-all duration-300 z-40
+          ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}
+      >
+        {/* Logo row */}
+        <div className="flex items-center justify-between px-4 h-[52px] border-b border-gray-100 shrink-0">
+          {!collapsed && (
+            <span className="text-[17px] font-extrabold tracking-tight text-gray-900 select-none">
+              CONCEPS
+            </span>
+          )}
+          <button
+            onClick={() => setCollapsed(c => !c)}
+            className="hidden lg:flex w-6 h-6 items-center justify-center text-gray-400 hover:text-gray-700 transition-colors ml-auto"
+          >
+            {collapsed ? <ChevronRight size={15} /> : <ChevronLeft size={15} />}
+          </button>
+        </div>
 
       {/* Nav */}
       <nav className="flex-1 overflow-y-auto sidebar-scroll py-3 px-2 space-y-0.5">
@@ -118,5 +127,6 @@ export default function Sidebar() {
         </div>
       </nav>
     </aside>
+    </>
   )
 }

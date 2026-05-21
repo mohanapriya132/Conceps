@@ -24,10 +24,10 @@ export default function List() {
       <PageHeader title="List" sub="Central Hub for Personal Customization" action="View Profile" />
 
       <div className="bg-white rounded-xl border border-gray-100 p-5">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <h3 className="text-[14px] font-bold text-gray-900">List</h3>
-          <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5">
-            <Search size={13} className="text-gray-400" />
+          <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 w-full sm:w-auto">
+            <Search size={13} className="text-gray-400 shrink-0" />
             <input
               placeholder="Search Teams"
               value={search}
@@ -70,7 +70,7 @@ export default function List() {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4 pt-3 border-t border-gray-100">
           <div className="flex items-center gap-2 text-[12px] text-gray-500">
             <span>Show</span>
             <select value={perPage} onChange={e => setPerPage(Number(e.target.value))}

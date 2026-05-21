@@ -55,9 +55,9 @@ export default function Dashboard() {
       <PageHeader title="Dashboard" sub="Central Hub for Personal Customization" action="View Profile" />
 
       {/* Row 1: Social cards + Promo banner */}
-      <div className="grid grid-cols-3 gap-5 mb-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
         {/* Social grid */}
-        <div className="col-span-2 grid grid-cols-2 gap-4">
+        <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {SOCIAL.map(s => (
             <div key={s.label} className="bg-white rounded-xl border border-gray-100 px-4 py-4 flex items-center gap-3">
               <div className={`w-10 h-10 ${s.iconBg} rounded-xl flex items-center justify-center text-lg shrink-0`}>
@@ -96,7 +96,7 @@ export default function Dashboard() {
       </div>
 
       {/* Row 2: Highlights + Earnings */}
-      <div className="grid grid-cols-2 gap-5 mb-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         {/* Highlights */}
         <div className="bg-white rounded-xl border border-gray-100 p-5">
           <div className="flex items-center justify-between mb-4">
@@ -180,7 +180,7 @@ export default function Dashboard() {
       </div>
 
       {/* Row 3: Team Meeting + Teams table */}
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
         {/* Team Meeting */}
         <div className="bg-white rounded-xl border border-gray-100 p-5">
           <div className="flex items-start justify-between">
@@ -216,15 +216,16 @@ export default function Dashboard() {
 
         {/* Teams table */}
         <div className="bg-white rounded-xl border border-gray-100 p-5">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <h3 className="text-[14px] font-bold text-gray-900">Teams</h3>
-            <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5">
-              <Search size={13} className="text-gray-400" />
-              <input placeholder="Search Teams" className="text-[12px] outline-none w-24 placeholder-gray-400" />
+            <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 w-full sm:w-auto">
+              <Search size={13} className="text-gray-400 shrink-0" />
+              <input placeholder="Search Teams" className="text-[12px] outline-none w-full sm:w-24 placeholder-gray-400" />
             </div>
           </div>
 
-          <table className="w-full">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[500px]">
             <thead>
               <tr className="border-b border-gray-100">
                 <th className="pb-2 text-left w-8"><input type="checkbox" className="accent-blue-600" /></th>
@@ -249,8 +250,9 @@ export default function Dashboard() {
               ))}
             </tbody>
           </table>
+          </div>
 
-          <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-3 border-t border-gray-100">
             <div className="flex items-center gap-2 text-[12px] text-gray-500">
               <span>Show</span>
               <select className="border border-gray-200 rounded px-1 py-0.5 text-[12px]">

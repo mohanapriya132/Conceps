@@ -29,7 +29,7 @@ export default function RegistrationForm() {
       <PageHeader title="Registration Form" sub="Central Hub for Personal Customization" action="View Profile" />
 
       <div className="bg-white rounded-xl border border-gray-100 p-6 max-w-4xl">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
 
           {/* Full Name */}
           <div>
@@ -83,7 +83,7 @@ export default function RegistrationForm() {
           </div>
 
           {/* Address — full width */}
-          <div className="col-span-2">
+          <div className="col-span-1 md:col-span-2">
             <label className="block text-[13px] font-semibold text-gray-700 mb-1.5">Address</label>
             <textarea placeholder="Address" rows={3} value={form.address}
               onChange={e => set('address', e.target.value)}
@@ -91,7 +91,7 @@ export default function RegistrationForm() {
           </div>
 
           {/* Currently Working */}
-          <div className="col-span-2">
+          <div className="col-span-1 md:col-span-2">
             <label className="block text-[13px] font-semibold text-gray-700 mb-2">Currently Working or not</label>
             <div className="flex gap-6">
               {['Yes','No'].map(opt => (
@@ -111,7 +111,7 @@ export default function RegistrationForm() {
           </div>
 
           {/* Years of Experience */}
-          <div className="col-span-2">
+          <div className="col-span-1 md:col-span-2">
             <label className="block text-[13px] font-semibold text-gray-700 mb-2">Years of Experience</label>
             <div className="space-y-2">
               {['1 year','2+ year','4+ year'].map(opt => (

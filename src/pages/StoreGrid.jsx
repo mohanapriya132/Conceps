@@ -93,20 +93,20 @@ function ProductCard({ p, onClick }) {
 function ProductModal({ p, onClose }) {
   if (!p) return null
   return (
-    <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/40 z-50 flex justify-end p-4 sm:p-5" onClick={onClose}>
       <div
-        className="bg-white rounded-2xl w-full max-w-[380px] shadow-2xl fade-up"
+        className="bg-white rounded-2xl w-full max-w-[380px] h-full flex flex-col shadow-2xl fade-up"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-100">
+        <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-100 shrink-0">
           <h3 className="text-[14px] font-bold text-gray-900">Product Details</h3>
           <button onClick={onClose} className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-gray-700">
             <X size={16} />
           </button>
         </div>
-        <div className="px-5 py-4">
+        <div className="px-5 py-4 overflow-y-auto flex-1">
           {/* image */}
-          <div className="relative bg-gray-50 rounded-xl flex items-center justify-center h-[160px] mb-4">
+          <div className="relative bg-gray-50 rounded-xl flex items-center justify-center min-h-[160px] h-[160px] mb-4 shrink-0">
             {p.save && (
               <span className="absolute top-2 right-2 bg-red-500 text-white text-[9px] font-bold px-2 py-0.5 rounded">
                 SAVE {p.save}%
@@ -163,18 +163,18 @@ export default function StoreGrid() {
   return (
     <div className="relative">
       {/* Store Topbar */}
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex-1 flex items-center gap-2 border border-gray-200 rounded-xl px-4 py-2.5 bg-white max-w-md">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+        <div className="w-full sm:flex-1 flex items-center gap-2 border border-gray-200 rounded-xl px-4 py-2.5 bg-white sm:max-w-md">
           <Search size={14} className="text-gray-400 shrink-0" />
           <input
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="flex-1 text-[13px] outline-none placeholder-gray-400"
+            className="flex-1 text-[13px] outline-none placeholder-gray-400 w-full"
             placeholder="Search products..."
           />
-          <span className="text-[10px] text-gray-300 border border-gray-200 rounded px-1.5 py-0.5 font-mono">⌘ K</span>
+          <span className="text-[10px] text-gray-300 border border-gray-200 rounded px-1.5 py-0.5 font-mono shrink-0">⌘ K</span>
         </div>
-        <div className="flex items-center gap-3 ml-4">
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
           <button className="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-white rounded-lg border border-gray-200 transition-colors">
             <User size={16} />
           </button>
@@ -193,7 +193,7 @@ export default function StoreGrid() {
       </div>
 
       {/* Result count + filters */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
         <p className="text-[13px] text-gray-600">
           1 - 12 over 280 results for{' '}
           <span className="text-blue-600 font-semibold">{search}</span>
@@ -214,14 +214,14 @@ export default function StoreGrid() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-4 gap-4 mb-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-5">
         {PRODUCTS.map(p => (
           <ProductCard key={p.id} p={p} onClick={setSelected} />
         ))}
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between bg-white rounded-xl border border-gray-100 px-5 py-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white rounded-xl border border-gray-100 px-5 py-3">
         <div className="flex items-center gap-2 text-[12px] text-gray-500">
           <span>Show</span>
           <select className="border border-gray-200 rounded px-1.5 py-0.5 text-[12px] focus:outline-none">
