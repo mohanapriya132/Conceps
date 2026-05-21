@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #F8F9FC;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Auth background ── */
+.auth-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ECEEF2;
+  position: relative;
+  overflow: hidden;
+}
+.auth-bg::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  left: -8%;
+  width: 55%;
+  height: 75%;
+  background: linear-gradient(130deg, rgba(210,215,228,0.7) 0%, rgba(230,234,242,0.3) 100%);
+  transform: rotate(-14deg);
+  border-radius: 48px;
+}
+.auth-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -18%;
+  right: -8%;
+  width: 52%;
+  height: 70%;
+  background: linear-gradient(130deg, rgba(210,215,228,0.6) 0%, rgba(230,234,242,0.25) 100%);
+  transform: rotate(-14deg);
+  border-radius: 48px;
+}
+
+/* ── OTP inputs ── */
+.otp-box {
+  width: 52px;
+  height: 58px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.otp-box:focus {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+/* ── Sidebar scrollbar ── */
+.sidebar-scroll::-webkit-scrollbar { width: 3px; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 4px; }
+
+/* ── Stars ── */
+.star-filled { color: #F59E0B; }
+.star-empty  { color: #D1D5DB; }
+
+/* ── Fade-in animation ── */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(10px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.3s ease forwards; }
