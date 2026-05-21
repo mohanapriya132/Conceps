@@ -193,8 +193,6 @@ npm run build
 ## 👩‍💻 Author
 
 Built by **Priya** — Frontend Developer  
-YouTube: [@Preedi_beyond](https://youtube.com/@Preedi_beyond)
-
 ---
 
 ## 📝 License
